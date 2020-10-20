@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      Maze/Labirynt
+    </title>
+    <link rel='stylesheet' href='reset.css'>
+    <link rel='stylesheet' href='style.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Maze/Labirynt</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <a href='#address'><li>Zupełnie niepotrzebny link</li></a>
+        </ul>
+      </nav> 
+    </header>
+    <main>
+      <h2>Zaprojektuj swój labirynt/Design your own maze</h2>
+      <h3>Co potrzebujesz?/What do you need?</h3>
+      <ul>
+        <li>Labirynt "wyrysujesz" używając klawiatury</li>
+        <li>Create a maze using a keyboard.</li>
+        <li>Wejscie do labiryntu to znak '@'</li>
+        <li>The maze entrance is a '@' key.</li>
+        <li>Wyjście z labiryntu - '$'.</li>
+        <li>The maze exit - '$'.</li>
+        <li>Podane w formularzu szerokość i wysokość labiryntu odpowiadają ilości użytych przez Ciebie znaków</li>
+        <li>Width and height provided in a form correspond with the number of keys used to created a maze. </li>
+      </ul>
+      <h2>Przykładowe labirynty/Sample mazes</h2>
+      <section id='mazes'>
+        <figure>
+          <img src='pictures/labir1.jpg'>
+        </figure>
+        <figure>
+          <img src='pictures/maze1.jpg'>
+        </figure>
+      </section>
+      <form>
+        <fieldset>
+          <legend>Aby zacząć, podaj poniższe informacje/Enter requested below info to start creating a maze.</legend>
+          <label>Szerokość labiryntu/Enter a maze width</label>
+          <input type='text' name='width' placeholder='Liczba to ilość znaków'>
+          <label>Wysokość labirytntu/Enter a maze heigth</label>
+          <input type='text' name='height' placeholder='Liczba to ilość znaków'>
+
+          <label>Narysuj labirynt/Design a maze</label>
+          <input type='text' name='labir' >
+        </fieldset>
+      </form>
+      <footer>
+        <address id='address'>
+          <p>Tu nic nie ma <a href="mailto:webmaster@example.com">Nie odpisujemy ;)</a></p>
+        </address>
+        <p>&copy; shauvia</p>
+      </footer>  
+    </main> 
+  </body>
+</html>
