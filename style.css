@@ -1,16 +1,42 @@
-body{
-  color: rgb(2, 133, 2);
-  background-color: rgb(206, 205, 188);
+/* Colors:
+india green: rgb(12, 133, 2);
+Star Command Blue: rgb(34, 116, 165)
+Eggplant: rgb(75, 59, 71)
+Pale Spring Bud: rgb(207, 210, 178);
+Gainsboro: rgb(224, 216, 222);
+;
+
+*/
+body {
+  color: rgb(207 210 178);
+  background-color: rgb(75, 59, 71);
   font-family: 'VT323', monospace;
 }
+
 h1 {
-  color: rgb(12, 168, 12);
+  color: rgb(12, 133, 2);
   font-family: 'Press Start 2P', cursive;
   font-size: 5em;
-  margin: 0 0 7vh 0 ;
+  margin: 0 0 7vh 0;
   padding-top: 0.7em;
-  /* outline: 1px dashed rgb(255, 38, 0); */
   text-align: center;
+}
+
+h2 {
+  /* outline: 2px dashed rgb(255, 145, 0); */
+  width: 100%;
+
+  /* margin-bottom: 0.5vh; */
+  text-align: center;
+  font-size: 3em;
+}
+
+h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 2.1em;
+
+  /* margin-bottom: 2vh; */
 }
 
 nav > ul {
@@ -18,39 +44,221 @@ nav > ul {
   flex-direction: row;
   justify-content: flex-end;
   margin-bottom: 15vh;
-  /* outline: 1px dashed rgb(255, 94, 0); */
 }
 
 nav li {
-  color:rgb(175, 54, 18);
+  color: gainsboro;
   font-size: 1.9em;
   font-family: 'Belleza', sans-serif;
-  /* outline: 1px dashed blue; */
   padding: 1em 0 1em 0;
   margin: 0 2em 0 2em;
-
 }
 
 a:link {
   text-decoration: none;
-  color: rgb(2, 133, 2);
+  color: Gainsboro;
 }
 
 a:visited {
   text-decoration: none;
-  color: rgb(2, 133, 2);
+  color: rgb(224, 216, 222);
+}
+
+.eng {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 5vh;
+  margin-top: 1.5vh;
+  color: rgb(224, 216, 222);
+}
+
+.instructions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2%;
+  grid-template-areas: 'header1 header2';
+}
+
+section#mazes {
+  grid-area: header1;
+}
+
+section#youNeed {
+  grid-area: header2;
 }
 
 #mazes {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 5vh auto 15vh auto;
+  flex-direction: column;
+  align-items: center;
 }
 
-h2 {
+#youNeed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#youNeed > :nth-child(1) {
+  width: 100%;
   text-align: center;
-  margin-bottom: 10vh;
   font-size: 3em;
 }
 
+#youNeed > :nth-child(3) {
+  width: 100%;
+  text-align: center;
+}
+
+.liEng {
+  color: rgb(224, 216, 222);
+  font-size: 1.5em;
+  margin-bottom: 3vh;
+  margin-top: 1.5vh;
+  text-align: center;
+}
+
+#youNeed > ul :nth-child(odd) {
+  font-size: 2.3em;
+  margin: 5vh 2vh 1vh 2vh;
+  list-style-type: disc;
+  list-style-position: inside;
+  text-align: center;
+}
+
+img {
+  border-radius: 10px;
+  margin-bottom: 5vh;
+  box-shadow: 5px 10px 15px rgb(122, 96, 116);
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  column-gap: 5%;
+  row-gap: 3vh;
+  grid-template-areas:
+    'descrip descrip '
+    'sher inputSher'
+    'wys inputWys'
+    'lab inputLab'
+    'butSub butSub';
+
+  /* justify-content: center; */
+  margin: 3em auto 0 auto;
+  width: 50%;
+
+  /* height: 70vh; */
+
+  /* outline: 2px dashed rgb(78, 236, 236); */
+}
+
+legend {
+  grid-area: descrip;
+  text-align: center;
+}
+
+legend :nth-child(1) {
+  font-size: 2.9em;
+}
+
+legend :nth-child(2) {
+  color: rgb(224, 216, 222);
+  font-size: 1.7em;
+  margin-top: 1vh;
+}
+
+label[for=width] {
+  grid-area: sher;
+  margin-top: 2vh;
+  text-align: right;
+}
+
+label[for=width] :nth-child(1) {
+  font-size: 2.3em;
+}
+
+label[for=width] :nth-child(2) {
+  color: rgb(224, 216, 222);
+  font-size: 1.3em;
+}
+
+#width {
+  grid-area: inputSher;
+  color: rgb(224, 216, 222);
+  margin-top: 2vh;
+
+  /* outline: 2px dashed rgb(78, 236, 78); */
+  background-color: rgb(242, 245, 222);
+}
+
+label[for=height] {
+  grid-area: wys;
+  text-align: right;
+  margin-top: 2vh;
+}
+
+label[for=height] :nth-child(1) {
+  font-size: 2.3em;
+}
+
+label[for=height] :nth-child(2) {
+  color: rgb(224, 216, 222);
+  font-size: 1.3em;
+}
+
+#height {
+  grid-area: inputWys;
+  margin-top: 2vh;
+
+  /* outline: 2px dashed rgb(236, 78, 139); */
+  background-color: rgb(242, 245, 222);
+}
+
+label[for=labirynt] {
+  margin-top: 2vh;
+  text-align: right;
+  grid-area: lab;
+
+  /* outline: 2px dashed rgb(236, 149, 78); */
+}
+
+#labirynt {
+  grid-area: inputLab;
+  background-color: rgb(242, 245, 222);
+  margin-top: 2vh;
+
+  /* outline: 2px dashed rgb(220, 236, 78); */
+}
+
+label[for=labirynt] :nth-child(1) {
+  font-size: 2.3em;
+}
+
+label[for=labirynt] :nth-child(2) {
+  color: rgb(224, 216, 222);
+  font-size: 1.3em;
+}
+
+button {
+  grid-area: butSub;
+  background-color: rgb(207, 210, 178);
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  height: 4vh;
+  justify-self: center;
+  transition-duration: 0.4s;
+
+  /* outline: 2px dashed rgb(78, 236, 236); */
+}
+
+button:hover {
+  background-color: #4caf50;
+  color: white;
+}
+}

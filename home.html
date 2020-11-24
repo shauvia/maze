@@ -23,38 +23,55 @@
       </nav> 
     </header>
     <main>
-      <h2>Zaprojektuj swój labirynt/Design your own maze</h2>
-      <h3>Co potrzebujesz?/What do you need?</h3>
-      <ul>
-        <li>Labirynt "wyrysujesz" używając klawiatury</li>
-        <li>Create a maze using a keyboard.</li>
-        <li>Wejscie do labiryntu to znak '@'</li>
-        <li>The maze entrance is a '@' key.</li>
-        <li>Wyjście z labiryntu - '$'.</li>
-        <li>The maze exit - '$'.</li>
-        <li>Podane w formularzu szerokość i wysokość labiryntu odpowiadają ilości użytych przez Ciebie znaków</li>
-        <li>Width and height provided in a form correspond with the number of keys used to created a maze. </li>
-      </ul>
-      <h2>Przykładowe labirynty/Sample mazes</h2>
-      <section id='mazes'>
-        <figure>
-          <img src='pictures/labir1.jpg'>
-        </figure>
-        <figure>
-          <img src='pictures/maze1.jpg'>
-        </figure>
-      </section>
+      <div class='instructions'>
+        <section id='mazes'>
+          <h2>Przykładowe labirynty</h2>
+          <h2 class='eng'>Sample mazes</h2>
+          <figure>
+            <img src='pictures/labir1.jpg'>
+          </figure>
+          <figure>
+            <img src='pictures/maze1.jpg'>
+          </figure>
+        </section>
+        <section id='youNeed'>
+            <h2>Zaprojektuj swój labirynt.</h2>
+            <h2 class='eng'>Design your own maze</h2>
+            <h3>Poniżej znajdziesz instrukcje jak stworzyć labirynt.</h3>
+            <h3 class='eng'>Below there is instruction how to design a maze.</h3>
+            <ul>
+              <li>Labirynt "wyrysujesz" używając klawiatury.</li>
+              <li class='liEng'>Create a maze using a keyboard.</li>
+              <li>Wejście do labiryntu to znak '@'.</li>
+              <li class='liEng'>The maze entrance is a '@' key.</li>
+              <li>Wyjście z labiryntu - '$'.</li>
+              <li class='liEng'>The maze exit - '$'.</li>
+              <li>Podane w formularzu szerokość i wysokość labiryntu odpowiadają ilości użytych przez Ciebie znaków.</li>
+              <li class='liEng'>Width and height provided in a form correspond with the number of keys used to create a maze.</li>
+            </ul>
+          </section>
+    </div>
       <form>
-        <fieldset>
-          <legend>Aby zacząć, podaj poniższe informacje/Enter requested below info to start creating a maze.</legend>
-          <label>Szerokość labiryntu/Enter a maze width</label>
-          <input type='text' name='width' placeholder='Liczba to ilość znaków'>
-          <label>Wysokość labirytntu/Enter a maze heigth</label>
-          <input type='text' name='height' placeholder='Liczba to ilość znaków'>
-
-          <label>Narysuj labirynt/Design a maze</label>
-          <input type='text' name='labir' >
-        </fieldset>
+          <legend>
+            <p>Aby zacząć, podaj poniższe informacje</p> 
+            <p>Enter requested below info to start creating a maze.</p>
+          </legend>
+          <label for='width'>
+            <p>Szerokość labiryntu</p> 
+            <p>Enter a maze width</p>
+            </label>
+          <input type='text' id='width' name='width' placeholder='Liczba to ilość kwiatow'>
+          <label for='height'>
+            <p>Wysokość labirytntu</p>
+            <p>Enter a maze height</p>
+          </label>
+          <input type='text' id='height' name='height' placeholder='Liczba to ilość znaków'>
+          <label for='labirynt'>
+            <p>Narysuj labirynt</p> 
+            <p>Design a maze</p>
+            </label>
+          <textarea id='labirynt' name='labirynt' rows='20' cols='40'></textarea>
+          <button type="submit">No, wściśnij mię!</button>
       </form>
       <footer>
         <address id='address'>
