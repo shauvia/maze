@@ -261,4 +261,46 @@ button:hover {
   background-color: #4caf50;
   color: white;
 }
+
+/* Table */
+
+#displayTable {
+  /* border: 3px solid rgb(226, 20, 20); */
+  margin: 0 auto 0 auto;
 }
+
+.mazeWall {
+  width: 2.5vw;
+  height: 5vh;
+  background-color: /* rgb(255, 207, 86) */
+  rgb(0, 99, 93);
+
+  /* border: 3px solid rgb(7, 141, 7); */
+}
+
+.noWall {
+  width: 2.5vw;
+  height: 5vh;
+  background-color: rgb(134, 186, 144);
+}
+
+.enterMaze {
+  width: 2.5vw;
+  height: 5vh;
+  border: 2px solid rgb(255, 207, 86);
+
+  /* background-color: rgb(105, 20, 14); */
+}
+
+.exitMaze {
+  width: 2.5vw;
+  height: 5vh;
+  border: 2px solid rgb(211, 75, 21);
+}
+
+/* ochre: rgb(195, 111, 9);
+maize Crayola: rgb(255, 207, 86);
+Skobeloff rgb(0, 99, 93)
+Dark Sea Green: rgb(134, 186, 144);SkobeloffrgbDarkSeaGreen
+Xiketic rgb(23, 3, 18) */
+Blood Red rgb(105, 20, 14)

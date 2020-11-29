@@ -40,8 +40,8 @@
             <h3>Poniżej znajdziesz instrukcje jak stworzyć labirynt.</h3>
             <h3 class='eng'>Below there is instruction how to design a maze.</h3>
             <ul>
-              <li>Labirynt "wyrysujesz" używając klawiatury.</li>
-              <li class='liEng'>Create a maze using a keyboard.</li>
+              <li>Labirynt "wyrysujesz" używając znaku: 'x'.</li>
+              <li class='liEng'>Create a maze using a 'x' key.</li>
               <li>Wejście do labiryntu to znak '@'.</li>
               <li class='liEng'>The maze entrance is a '@' key.</li>
               <li>Wyjście z labiryntu - '$'.</li>
@@ -70,15 +70,20 @@
             <p>Narysuj labirynt</p> 
             <p>Design a maze</p>
             </label>
-          <textarea id='labirynt' name='labirynt' rows='20' cols='40'></textarea>
-          <button type="submit">No, wściśnij mię!</button>
+          <textarea id='labirynt' name='labirynt' rows='20' cols='40'>xxxxxxxxxxxxxxxxxxxx
+@                  x
+x                  x
+xxxxxxxxxxxxxxxxx$xx</textarea>
+            <button type="submit" id='submit' >No, wściśnij mię!</button>
       </form>
+      <table id='displayTable'></table>
       <footer>
         <address id='address'>
           <p>Tu nic nie ma <a href="mailto:webmaster@example.com">Nie odpisujemy ;)</a></p>
         </address>
         <p>&copy; shauvia</p>
       </footer>  
-    </main> 
+    </main>
+    <script src="app.js"></script> 
   </body>
 </html>
