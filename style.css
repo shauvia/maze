@@ -266,22 +266,21 @@ button:hover {
 
 #displayTable {
   /* border: 3px solid rgb(226, 20, 20); */
-  margin: 0 auto 0 auto;
+  margin: 15vh auto 0 auto;
 }
 
 .mazeWall {
   width: 2.5vw;
   height: 5vh;
-  background-color: /* rgb(255, 207, 86) */
-  rgb(0, 99, 93);
-
-  /* border: 3px solid rgb(7, 141, 7); */
+  background-color: rgb(0, 99, 93);
+  border: 1px solid  rgb(1, 114, 106);
 }
 
 .noWall {
   width: 2.5vw;
   height: 5vh;
   background-color: rgb(134, 186, 144);
+  border: 1px solid  rgb(129, 179, 139);
 }
 
 .enterMaze {

@@ -22,7 +22,7 @@ function createTable(str){
       dispTable.appendChild(tableRow);
     } else {
       tableData = document.createElement('td');
-      tableData.textContent = str[i];
+      tableData.textContent = '';
       tableRow.appendChild(tableData);
       console.log('doingTable');
       if(str[i]==='x'){
