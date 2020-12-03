@@ -35,7 +35,6 @@ function labirynth(str){
       maze.push(oneMazeRow);
       oneMazeRow = []
       // console.log('1stIf: oneMazeRow', oneMazeRow);
-      //  
     } else {
       if(str[i] === 'x'){
         let newField = new Field(true, false, false);
@@ -63,17 +62,17 @@ function labirynth(str){
 
 function createTable(arr){
   let dispTable = document.getElementById('displayTable');
-  for( let i = 0; i < arr.length; i++){
+  for( let y = 0; y < arr.length; y++){
     let tableRow = document.createElement('tr');
-    for (let j = 0; j < arr[i].length; j++) {
+    for (let x = 0; x < arr[y].length; x++) {
       tableData = document.createElement('td');
       tableData.textContent = '';
       tableRow.appendChild(tableData);
-      if(arr[i][j].is_wall === true){
+      if(arr[y][x].is_wall === true){
         tableData.className = 'mazeWall';
-      } else if (arr[i][j].is_entrance === true){
+      } else if (arr[y][x].is_entrance === true){
         tableData.className = 'enterMaze';
-      } else if(arr[i][j].is_exit === true){
+      } else if(arr[y][x].is_exit === true){
         tableData.className = 'exitMaze';
       } else {
         tableData.className = 'noWall';  
