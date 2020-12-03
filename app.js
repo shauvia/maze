@@ -3,7 +3,7 @@
 // const maze_innput = document.getElementById('labirynt').value; 
 
 
-function Labirynth(m_height, m_width, m_proj){
+function UserLabirynth(m_height, m_width, m_proj){
   this.mazeHeight = m_height;
   this.mazeWidth = m_width;
   this.mazeProj = m_proj;
@@ -19,14 +19,14 @@ function labirynth(str){
   let oneMazeRow = []
   let maze = [];
   for (let i = 0; i <= str.length; i++){
-    console.log('str[i]', str[i]);
+    // console.log('str[i]', str[i]);
     if(i === str.length){
-      console.log(oneMazeRow);
+      // console.log(oneMazeRow);
       if(oneMazeRow.length === 0){
-        console.log("empty Row");
+        // console.log("empty Row");
         return maze;
       } else{
-        console.log("eqq");
+        // console.log("eqq");
         maze.push(oneMazeRow);
         return maze;
       }  
@@ -39,19 +39,19 @@ function labirynth(str){
     } else {
       if(str[i] === 'x'){
         let newField = new Field(true, false, false);
-        console.log('X: newField', newField);
+        // console.log('X: newField', newField);
         oneMazeRow.push(newField);
       } else if(str[i] === ' '){
         let newField = new Field(false, false, false);
-        console.log('space: newField', newField);
+        // console.log('space: newField', newField);
         oneMazeRow.push(newField);
       } else if(str[i] === '@'){
         newField = new Field(false, true, false);
-        console.log('@: newField', newField)
+        // console.log('@: newField', newField)
         oneMazeRow.push(newField);
       } else if(str[i] === '$'){
         newField = new Field(false, false, true);
-        console.log('$: newField', newField)
+        // console.log('$: newField', newField)
         oneMazeRow.push(newField);
       }
     }  
@@ -61,33 +61,58 @@ function labirynth(str){
 
 // zrobić funkcję, która bierze String, sprawdza, czy dana litera stringa jest np 'x' i jeśli TrackEvent, to tworzy obiekt field z paremetrami: true, false, false i wpycha ten obiekt do listy.
 
-
-function createTable(str){
+function createTable(arr){
   let dispTable = document.getElementById('displayTable');
-  let tableRow = document.createElement('tr');
-  dispTable.appendChild(tableRow);
-  for(let i = 0; i < str.length; i++){
-    console.log('str[i]', str[i]);
-    if(str[i]=== '\n'){
-      tableRow = document.createElement('tr');
-      dispTable.appendChild(tableRow);
-    } else {
+  for( let i = 0; i < arr.length; i++){
+    let tableRow = document.createElement('tr');
+    for (let j = 0; j < arr[i].length; j++) {
       tableData = document.createElement('td');
       tableData.textContent = '';
       tableRow.appendChild(tableData);
-      console.log('doingTable');
-      if(str[i]==='x'){
+      if(arr[i][j].is_wall === true){
         tableData.className = 'mazeWall';
-      } else if(str[i]===' '){
-        tableData.className = 'noWall';
-      } else if (str[i]==='@'){
+      } else if (arr[i][j].is_entrance === true){
         tableData.className = 'enterMaze';
-      } else if(str[i]==='$'){
+      } else if(arr[i][j].is_exit === true){
         tableData.className = 'exitMaze';
-      }  
-    }
+      } else {
+        tableData.className = 'noWall';  
+      }
+      dispTable.appendChild(tableRow);
+      // tableRow = document.createElement('tr');
+    }  
   }
+  
+  
 }
+
+
+// function createTable(str){
+//   let dispTable = document.getElementById('displayTable');
+//   let tableRow = document.createElement('tr');
+//   dispTable.appendChild(tableRow);
+//   for(let i = 0; i < str.length; i++){
+//     console.log('str[i]', str[i]);
+//     if(str[i]=== '\n'){
+//       tableRow = document.createElement('tr');
+//       dispTable.appendChild(tableRow);
+//     } else {
+//       tableData = document.createElement('td');
+//       tableData.textContent = '';
+//       tableRow.appendChild(tableData);
+//       console.log('doingTable');
+//       if(str[i]==='x'){
+//         tableData.className = 'mazeWall';
+//       } else if(str[i]===' '){
+//         tableData.className = 'noWall';
+//       } else if (str[i]==='@'){
+//         tableData.className = 'enterMaze';
+//       } else if(str[i]==='$'){
+//         tableData.className = 'exitMaze';
+//       }  
+//     }
+//   }
+// }
 
 
 
@@ -100,10 +125,12 @@ function createLabirynth(event){
   let height_input = event.target.height.value;
   let maze_innput = event.target.labirynt.value;
   
-  let userMaze = new Labirynth(width_input, height_input, maze_innput);
-  createTable(userMaze.mazeProj);
-  console.log(userMaze);
-  console.log(userMaze.mazeProj);
+  let userMazeInput = new UserLabirynth(width_input, height_input, maze_innput);
+  let model = labirynth(userMazeInput.mazeProj);
+  createTable(model);
+  console.log(model)
+  console.log(userMazeInput);
+  console.log(userMazeInput.mazeProj);
 }
 
 // console.log(userMaze.mazeProj);
