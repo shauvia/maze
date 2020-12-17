@@ -1,19 +1,32 @@
-// const width_input = document.getElementById('width').value;
-// const height_input = document.getElementById('height').value;
-// const maze_innput = document.getElementById('labirynt').value; 
-
-
-function UserLabirynth(m_height, m_width, m_proj){
-  this.mazeHeight = m_height;
-  this.mazeWidth = m_width;
-  this.mazeProj = m_proj;
-}
-
 function Field(is_wall, is_entrance, is_exit){
   this.is_wall = is_wall;
   this.is_entrance = is_entrance;
   this.is_exit = is_exit;
 }
+
+function Pawn(Y_position, X_position){
+  this.y = Y_position;
+  this.x = X_position;
+  this.getNewPosition = function(str){
+    let y = this.y;
+    let x = this.x;
+    if (str === 'up'){
+      y = this.y-1;
+    } else if (str === 'down'){
+      y = this.y+1;
+    } else if (str ==='left'){
+      x = this.x-1;
+    } else if(str === 'right') {
+      x = this.x+1
+    }
+    return [y,x];
+  }
+  this.moveToNewPosition = function(y,x){
+    this.y = y;
+    this.x = x;
+  }
+}
+
 
 function labirynth(str){
   let oneMazeRow = []
@@ -58,10 +71,34 @@ function labirynth(str){
   return maze;
 }
 
-// zrobić funkcję, która bierze String, sprawdza, czy dana litera stringa jest np 'x' i jeśli TrackEvent, to tworzy obiekt field z paremetrami: true, false, false i wpycha ten obiekt do listy.
+function isPawnPositionValid(maze, y, x){
+  if (y < 0 || x < 0 || y === maze.length || x === maze[y].length){
+    return false;
+  } else if(maze[y][x].is_wall === true){
+    return false;
+  }
+}
 
-function createTable(arr){
-  let dispTable = document.getElementById('displayTable');
+function findEntrance(arr){
+  let coordinates = [];
+  for(let i = 0; i < arr.length; i++){
+    // console.log('i', i);
+    for(let j = 0; j < arr[i].length; j++){
+      // console.log('j', j)
+      if (arr[i][j].is_entrance === true){
+        let y = i;
+        let x = j;
+        coordinates.push(y, x);
+      }
+    }
+  }
+  return coordinates;
+}
+
+function drawTable(arr){
+  let tablePlace = document.getElementById('tablePlace');
+  let table = document.createElement('table');
+  tablePlace.appendChild(table)
   for( let y = 0; y < arr.length; y++){
     let tableRow = document.createElement('tr');
     for (let x = 0; x < arr[y].length; x++) {
@@ -69,68 +106,114 @@ function createTable(arr){
       tableData.textContent = '';
       tableRow.appendChild(tableData);
       if(arr[y][x].is_wall === true){
+        let yStr = y.toString();
+        let xStr = x.toString();
+        let yxStr = yStr + ',' + xStr;
+        // console.log('yxStr', yxStr);
         tableData.className = 'mazeWall';
+        tableData.id = yxStr;
       } else if (arr[y][x].is_entrance === true){
+        let yStr = y.toString();
+        let xStr = x.toString();
+        let yxStr = yStr + ',' + xStr;
+        // console.log('yxStr', yxStr);
         tableData.className = 'enterMaze';
+        tableData.id = yxStr;
       } else if(arr[y][x].is_exit === true){
+        let yStr = y.toString();
+        let xStr = x.toString();
+        let yxStr = yStr + ',' + xStr;
+        console.log('yxStr', yxStr);
         tableData.className = 'exitMaze';
+        tableData.id = yxStr;
       } else {
-        tableData.className = 'noWall';  
+        let yStr = y.toString();
+        let xStr = x.toString();
+        let yxStr = yStr + ',' + xStr;
+        console.log('yxStr', yxStr);
+        tableData.className = 'noWall'; 
+        tableData.id = yxStr; 
       }
-      dispTable.appendChild(tableRow);
-      // tableRow = document.createElement('tr');
+      table.appendChild(tableRow);
     }  
   }
-  
-  
 }
 
+function drawPawn(pawn){
+  let y = pawn.y.toString();
+  let x = pawn.x.toString();
+  let yx = y + ',' + x;
+  let findID = document.getElementById(yx);
+  findID.textContent = 'PGG';
+}
 
-// function createTable(str){
-//   let dispTable = document.getElementById('displayTable');
-//   let tableRow = document.createElement('tr');
-//   dispTable.appendChild(tableRow);
-//   for(let i = 0; i < str.length; i++){
-//     console.log('str[i]', str[i]);
-//     if(str[i]=== '\n'){
-//       tableRow = document.createElement('tr');
-//       dispTable.appendChild(tableRow);
-//     } else {
-//       tableData = document.createElement('td');
-//       tableData.textContent = '';
-//       tableRow.appendChild(tableData);
-//       console.log('doingTable');
-//       if(str[i]==='x'){
-//         tableData.className = 'mazeWall';
-//       } else if(str[i]===' '){
-//         tableData.className = 'noWall';
-//       } else if (str[i]==='@'){
-//         tableData.className = 'enterMaze';
-//       } else if(str[i]==='$'){
-//         tableData.className = 'exitMaze';
-//       }  
-//     }
-//   }
-// }
+function showMazeAndControls(){
+  let clas = document.getElementsByClassName('tableArrs');
+  clas[0].classList.remove('invisible');
+}
 
+function removeTable(){
+  let previousTable = document.getElementsByTagName('table');
+  if (previousTable.length !== 0){
+    previousTable[0].remove();
+  }
+}
 
+function drawEverything(arr, pawn){
+  removeTable();
+  drawTable(arr);
+  drawPawn(pawn);
+}
 
-// textarea input an array or sting??
+var mazeModel, entrance, pawn;
 
 function createLabirynth(event){
   event.preventDefault();
 
   let width_input = event.target.width.value;
   let height_input = event.target.height.value;
-  let maze_innput = event.target.labirynt.value;
-  
-  let userMazeInput = new UserLabirynth(width_input, height_input, maze_innput);
-  let model = labirynth(userMazeInput.mazeProj);
-  createTable(model);
-  console.log(model)
-  console.log(userMazeInput);
-  console.log(userMazeInput.mazeProj);
+  let maze_input = event.target.labirynt.value;
+
+  mazeModel = labirynth(maze_input);
+  entrance = findEntrance(mazeModel);
+  pawn = new Pawn(entrance[0],entrance[1]);
+  drawEverything(mazeModel, pawn);
+  showMazeAndControls();
 }
 
-// console.log(userMaze.mazeProj);
 addEventListener('submit', createLabirynth);
+
+
+function movePawn(event){
+  let arrow = event.target.id;
+  let newCoordinates = pawn.getNewPosition(arrow);
+  let isValid = isPawnPositionValid(mazeModel, newCoordinates[0],newCoordinates[1]);
+  if (isValid === false){
+    alert("Gdzie leziesz? Zawróć!")
+  } else {
+    pawn.moveToNewPosition(newCoordinates[0], newCoordinates[1]);
+  }
+  drawEverything(mazeModel, pawn);
+}
+
+let buttopUp = document.getElementById('up');
+let buttopDown = document.getElementById('down');
+let buttonLeft = document.getElementById('left');
+let buttonRight = document.getElementById('right');
+
+buttopUp.addEventListener('click', movePawn);
+buttopDown.addEventListener('click', movePawn);
+buttonLeft.addEventListener('click', movePawn);
+buttonRight.addEventListener('click', movePawn);
+
+
+
+
+// 1.listener na każdym przycisku;
+// 2.pionek idzie go góry - uruchomiona funkcja w obiekcie pionek; (f-cja idzie w góre, dół, prawo, lewo)
+// 3. Zapamietanie nowego miejsca w obiekcie pionek;
+// 4. Wyrysowanie pionka w nowym miejscu.
+// później zrobić f-cję, która sprawdza, czy pionek może gdzieś iść, czy nie wychodzi poza labirynt(y, x =0), albo w prawo i w dół oraz czy nie ma tam sciany !!!!!
+
+// Do zrobienia:
+// -aby się przesuwało w dół po kliknięciu przycisku formularza;

@@ -51,31 +51,41 @@
             </ul>
           </section>
     </div>
-      <form>
+      <form id='formularz'>
           <legend>
             <p>Aby zacząć, podaj poniższe informacje</p> 
             <p>Enter requested below info to start creating a maze.</p>
           </legend>
           <label for='width'>
-            <p>Szerokość labiryntu</p> 
-            <p>Enter a maze width</p>
+            <p>Pozycja Y ludka</p> 
+            <p>Enter a Y pawn entry</p>
             </label>
-          <input type='text' id='width' name='width' placeholder='Liczba to ilość kwiatow'>
+          <input type='text' id='width' name='width' placeholder='pozycja Y ludka'>
           <label for='height'>
-            <p>Wysokość labirytntu</p>
-            <p>Enter a maze height</p>
+            <p>Pozycja X ludka</p>
+            <p>Enter an X pawn entry</p>
           </label>
-          <input type='text' id='height' name='height' placeholder='Liczba to ilość znaków'>
+          <input type='text' id='height' name='height' placeholder='Pozycja X ludka'>
           <label for='labirynt'>
             <p>Narysuj labirynt</p> 
             <p>Design a maze</p>
             </label>
           <textarea id='labirynt' name='labirynt' rows='20' cols='40'>xxx
-@ x
-x$x</textarea>
+@ $
+xxx</textarea>
             <button type="submit" id='submit' >No, wściśnij mię!</button>
       </form>
-      <table id='displayTable'></table>
+      <div class='tableArrs invisible'>
+        <div id='tablePlace'></div>
+        
+        <div class='arrows'>
+          <button id='left' class='arrBtn'>Lewo</button>
+          <button id='up' class='arrBtn'>Góra</button>
+          <button id='down' class='arrBtn'>Dół</button>
+          <button id='right' class='arrBtn'>Prawo</button>
+        </div>
+      </div>
+
       <footer>
         <address id='address'>
           <p>Tu nic nie ma <a href="mailto:webmaster@example.com">Nie odpisujemy ;)</a></p>

@@ -243,7 +243,7 @@ label[for=labirynt] :nth-child(2) {
   font-size: 1.3em;
 }
 
-button {
+form > button {
   grid-area: butSub;
   background-color: rgb(207, 210, 178);
   border-radius: 0.5em;
@@ -257,17 +257,12 @@ button {
   /* outline: 2px dashed rgb(78, 236, 236); */
 }
 
-button:hover {
+form > button:hover {
   background-color: #4caf50;
   color: white;
 }
 
 /* Table */
-
-#displayTable {
-  /* border: 3px solid rgb(226, 20, 20); */
-  margin: 15vh auto 0 auto;
-}
 
 .mazeWall {
   width: 2.5vw;
@@ -297,9 +292,78 @@ button:hover {
   border: 2px solid rgb(211, 75, 21);
 }
 
+.arrows {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  column-gap: 1%;
+  row-gap: 1%;
+  grid-template-areas:
+    'up up up'
+    'left down right';
+  width: 18vw;
+  height: 9em;
+}
+
+#left {
+  grid-area: left;
+}
+
+#right {
+  grid-area: right;
+}
+
+#up {
+  grid-area: up;
+  margin-bottom: 2vh;
+}
+
+#down {
+  grid-area: down;
+  margin: 0 1vw 0 1vw;
+}
+
+.arrBtn {
+  width: 5vw;
+  height: 5vh;
+  justify-self: center;
+  font-family: 'Press Start 2P', cursive;
+  color: rgb(179, 102, 8);
+  background-color: rgb(207, 210, 178);
+  text-align: center;
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  font-size: 0.8em;
+}
+
+div.arrows > button:hover {
+  background-color: rgb(184, 187, 161);
+  color: white;
+}
+
+div.arrows {
+  margin-left: 10vw;
+}
+
+.tableArrs {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15vh;
+  margin-bottom: 10vh;
+  justify-content: center;
+}
+
+.invisible {
+  display: none;
+}
+
+
 /* ochre: rgb(195, 111, 9);
 maize Crayola: rgb(255, 207, 86);
 Skobeloff rgb(0, 99, 93)
-Dark Sea Green: rgb(134, 186, 144);SkobeloffrgbDarkSeaGreen
+Dark Sea Green: rgb(134, 186, 144);
 Xiketic rgb(23, 3, 18) */
-Blood Red rgb(105, 20, 14)
+
+/* Blood Red rgb(105, 20, 14) */
