@@ -295,12 +295,13 @@ form > button:hover {
 .arrows {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   column-gap: 1%;
   row-gap: 1%;
   grid-template-areas:
     'up up up'
-    'left down right';
+    'left down right'
+    'random random random';
   width: 18vw;
   height: 9em;
 }
@@ -323,8 +324,13 @@ form > button:hover {
   margin: 0 1vw 0 1vw;
 }
 
+#random {
+  grid-area: random;
+  margin-top: 2vh;
+}
+
 .arrBtn {
-  width: 5vw;
+  width: 8em;
   height: 5vh;
   justify-self: center;
   font-family: 'Press Start 2P', cursive;

@@ -76,6 +76,14 @@ function isPawnPositionValid(maze, y, x){
     return false;
   } else if(maze[y][x].is_wall === true){
     return false;
+  } else {
+    return true;
+  }
+}
+
+function isPawnAtExit(maze, y, x){
+  if (maze[y][x].is_exit === true){
+    return true;
   }
 }
 
@@ -94,6 +102,7 @@ function findEntrance(arr){
   }
   return coordinates;
 }
+
 
 function drawTable(arr){
   let tablePlace = document.getElementById('tablePlace');
@@ -123,14 +132,14 @@ function drawTable(arr){
         let yStr = y.toString();
         let xStr = x.toString();
         let yxStr = yStr + ',' + xStr;
-        console.log('yxStr', yxStr);
+        // console.log('yxStr', yxStr);
         tableData.className = 'exitMaze';
         tableData.id = yxStr;
       } else {
         let yStr = y.toString();
         let xStr = x.toString();
         let yxStr = yStr + ',' + xStr;
-        console.log('yxStr', yxStr);
+        // console.log('yxStr', yxStr);
         tableData.className = 'noWall'; 
         tableData.id = yxStr; 
       }
@@ -165,6 +174,49 @@ function drawEverything(arr, pawn){
   drawPawn(pawn);
 }
 
+function validPositions(maze){
+  let directions = ['up', 'down', 'left', 'right'];
+  let positionsArr = []; 
+  for (let i = 0; i < directions.length; i++){
+    // console.log('controls[i]', directions[i]);
+    let newYX = pawn.getNewPosition(directions[i]);
+    // console.log('newYX', newYX);
+    let checkedPositions = isPawnPositionValid(maze, newYX[0], newYX[1]);
+    if (checkedPositions === true) {
+      positionsArr.push(newYX);
+    } 
+  }
+  return positionsArr;
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function randomMove(positionsArr){
+  let randomPos = getRandomInt(positionsArr.length);
+  return positionsArr[randomPos];
+}
+
+function proceedRandomlyToExit(){
+  let count = 0;
+  let isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
+  while(isExit !== true){
+    let posArr = validPositions(mazeModel);
+    let randomPosition = randomMove(posArr);
+    pawn.moveToNewPosition(randomPosition[0], randomPosition[1]); 
+    isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
+    count += 1 
+  }
+  console.log('count', count);
+}
+
+function scrollDownToView() {
+  var elmnt = document.getElementsByClassName("tableArrs");
+  console.log('elmnt', elmnt);
+  elmnt[0].scrollIntoView();
+}
+
 var mazeModel, entrance, pawn;
 
 function createLabirynth(event){
@@ -179,6 +231,7 @@ function createLabirynth(event){
   pawn = new Pawn(entrance[0],entrance[1]);
   drawEverything(mazeModel, pawn);
   showMazeAndControls();
+  scrollDownToView();
 }
 
 addEventListener('submit', createLabirynth);
@@ -188,23 +241,32 @@ function movePawn(event){
   let arrow = event.target.id;
   let newCoordinates = pawn.getNewPosition(arrow);
   let isValid = isPawnPositionValid(mazeModel, newCoordinates[0],newCoordinates[1]);
-  if (isValid === false){
+  if(arrow === 'random'){
+    proceedRandomlyToExit()
+  } else if (isValid === false){
     alert("Gdzie leziesz? Zawróć!")
-  } else {
+  }else{ 
     pawn.moveToNewPosition(newCoordinates[0], newCoordinates[1]);
+    }
+  let isAtExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
+  if(isAtExit === true){
+    setTimeout(function () {alert('Hurra!! Koniec labiryntu');}, 100);
   }
-  drawEverything(mazeModel, pawn);
+  drawEverything(mazeModel, pawn); 
 }
 
 let buttopUp = document.getElementById('up');
 let buttopDown = document.getElementById('down');
 let buttonLeft = document.getElementById('left');
 let buttonRight = document.getElementById('right');
+let buttonRandom = document.getElementById('random')
 
 buttopUp.addEventListener('click', movePawn);
 buttopDown.addEventListener('click', movePawn);
 buttonLeft.addEventListener('click', movePawn);
 buttonRight.addEventListener('click', movePawn);
+buttonRandom.addEventListener('click', movePawn);
+
 
 
 
