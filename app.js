@@ -198,23 +198,37 @@ function randomMove(positionsArr){
   return positionsArr[randomPos];
 }
 
-function proceedRandomlyToExit(){
-  let count = 0;
-  let isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
-  while(isExit !== true){
-    let posArr = validPositions(mazeModel);
-    let randomPosition = randomMove(posArr);
-    pawn.moveToNewPosition(randomPosition[0], randomPosition[1]); 
-    isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
-    count += 1 
-  }
-  console.log('count', count);
-}
+
 
 function scrollDownToView() {
   var elmnt = document.getElementsByClassName("tableArrs");
   console.log('elmnt', elmnt);
   elmnt[0].scrollIntoView();
+}
+
+function proceedRandomlyToExit(){
+  let count = 0;
+  let isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
+  let delay = 50;
+
+  let stepFunction = function() {
+    console.log('stepFunction');
+    let posArr = validPositions(mazeModel);
+    let randomPosition = randomMove(posArr);
+    pawn.moveToNewPosition(randomPosition[0], randomPosition[1]); 
+    isExit = isPawnAtExit(mazeModel, pawn.y,pawn.x);
+    count += 1
+    drawEverything(mazeModel, pawn); 
+    if(isExit !== true){
+      setTimeout(stepFunction, delay);
+    }
+  };
+
+  if(isExit !== true){
+    setTimeout(stepFunction, delay);
+  }
+
+  console.log('count', count);
 }
 
 var mazeModel, entrance, pawn;
@@ -241,9 +255,7 @@ function movePawn(event){
   let arrow = event.target.id;
   let newCoordinates = pawn.getNewPosition(arrow);
   let isValid = isPawnPositionValid(mazeModel, newCoordinates[0],newCoordinates[1]);
-  if(arrow === 'random'){
-    proceedRandomlyToExit()
-  } else if (isValid === false){
+  if (isValid === false){
     alert("Gdzie leziesz? Zawróć!")
   }else{ 
     pawn.moveToNewPosition(newCoordinates[0], newCoordinates[1]);
@@ -253,6 +265,10 @@ function movePawn(event){
     setTimeout(function () {alert('Hurra!! Koniec labiryntu');}, 100);
   }
   drawEverything(mazeModel, pawn); 
+}
+
+function movePawnRandomly(event){
+  proceedRandomlyToExit()
 }
 
 let buttopUp = document.getElementById('up');
@@ -265,7 +281,7 @@ buttopUp.addEventListener('click', movePawn);
 buttopDown.addEventListener('click', movePawn);
 buttonLeft.addEventListener('click', movePawn);
 buttonRight.addEventListener('click', movePawn);
-buttonRandom.addEventListener('click', movePawn);
+buttonRandom.addEventListener('click', movePawnRandomly);
 
 
 
