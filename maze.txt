@@ -1,0 +1,50 @@
+36 - biust
+31 - pod biustem
+31.5 - pas
+42 - biodra
+
+
+xxx
+x x
+@ x
+x $
+xxx
+
+xxxx
+x  x
+@ xx
+x  $
+xxxx
+
+xxxxxxxxxxxxxxxx
+xxxx     xxxxxxx
+xxxxxxxx  xxxxxx
+@          xxxxx
+x              x
+xxxxxxxxxx     x
+xxxx        xxxx
+xxxx$xxxxxxxxxxx
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxx           xxxxxxx          $
+xxxxxxxxxxxxxx   xxxxxxxx    xx   x
+xxxx                   xxxx      xx
+xxxxxx       xxxxxxxx   xxxxx    xx
+xxxxxxxxxx     xxxxxx        xx   x
+xxxxxx       xxxxxxxxxxxxx       xx
+xxxxxxx@xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+xxxxxxxxxxxxxxxxxxx$xxxxxxx
+xxxx     xxxxxxx      xxxxx
+xxxx   xxxxxx      xxxx   x
+xxxxx  xxxxxxxx    xxxxx  x
+x      xxxxxx   xxxx     xx
+x  xxx  xxx   xxxx   xx   x
+xx xxx  x   x   x   x   x x
+xx xxxxxxxxxx xxxxxxxxxxx x
+x                         x
+xxxxxxxxxxx@xxxxxxxxxxxxxxx
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  xx  xxxx xxx xxxx xxx x
+x   xx  x  x x x x x x x xx

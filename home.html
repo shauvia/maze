@@ -40,45 +40,39 @@
             <h3>Poniżej znajdziesz instrukcje jak stworzyć labirynt.</h3>
             <h3 class='eng'>Below there is instruction how to design a maze.</h3>
             <ul>
-              <li>Labirynt "wyrysujesz" używając znaku: 'x'.</li>
-              <li class='liEng'>Create a maze using a 'x' key.</li>
+              <li>Ściany labiryntu "wyrysujesz" używając znaku: 'x'.</li>
+              <li class='liEng'>Create a maze using an 'x' key.</li>
               <li>Wejście do labiryntu to znak '@'.</li>
-              <li class='liEng'>The maze entrance is a '@' key.</li>
+              <li class='liEng'>The maze entrance is an '@' key.</li>
               <li>Wyjście z labiryntu - '$'.</li>
-              <li class='liEng'>The maze exit - '$'.</li>
-              <li>Podane w formularzu szerokość i wysokość labiryntu odpowiadają ilości użytych przez Ciebie znaków.</li>
-              <li class='liEng'>Width and height provided in a form correspond with the number of keys used to create a maze.</li>
+              <li class='liEng'>The maze exit - '$' key.</li>
+              <li>Spacja to pole, po którym można się poruszać.</li>
+              <li class='liEng'>A space key is a field you can move on.</li>
             </ul>
           </section>
     </div>
+    <div class='algorithmDescrip'>
+      <p>Będziesz mieć do wyboru trzy algorytmy przejścia przez labirynt: <em>Losowy</em>, <em>Okruszki</em> i <em>Nić Ariadny</em>.</p> 
+      <p><em>Losowy</em>: wybór następnego pola, na które pionek ma wejść jest zupełnie losowe. Często wchodzi na pola, na których już był.</p>
+      <p><em>Okruszki</em>: algorytm preferuje nieodwiedzone pola, jeśli jakieś są. Jak nie ma, to chodzi po odwiedzonych polach.</p>
+      <p><em>Nić Ariadny</em>: algorytm wchodzi tylko na nieodwiedzone pola. Cofa się po własnych śladach jak się zakałapućka.</p>
+      <p>W oknie formularza znajduje się przykładowy labirynt. Aby narysować swój, zaznacz przykładowy labirynt, usuń klawiszem 'backspace' i wprowadż swój projekt.</p>
+    </div>
+    
+    
       <form id='formularz'>
-          <legend>
-            <p>Aby zacząć, podaj poniższe informacje</p> 
-            <p>Enter requested below info to start creating a maze.</p>
-          </legend>
-          <label for='width'>
-            <p>Pozycja Y ludka</p> 
-            <p>Enter a Y pawn entry</p>
-            </label>
-          <input type='text' id='width' name='width' placeholder='pozycja Y ludka'>
-          <label for='height'>
-            <p>Pozycja X ludka</p>
-            <p>Enter an X pawn entry</p>
-          </label>
-          <input type='text' id='height' name='height' placeholder='Pozycja X ludka'>
-          <label for='labirynt'>
-            <p>Narysuj labirynt</p> 
-            <p>Design a maze</p>
-            </label>
-          <textarea id='labirynt' name='labirynt' rows='20' cols='40'>xxxxxxxxxxxxxxxxxx
-xxx      xxx     x
-@  xxxxx xxxxxx  $
-xx  xx    xx     x
-x   x x          x
-x     x    xx x  x
-x  xx     x xxxxxx
-x     x          x
-xxxxxxxxxxxxxxxxxx</textarea>
+        <label for='labirynt'>
+          <p>Narysuj labirynt</p> 
+          <p>Design a maze</p>
+        </label>
+        <textarea id='labirynt' name='labirynt' rows='20' cols='40'>xxxxxxxxxxxxxxxx
+xxxx     xxxxxxx
+xxxxxxxx  xxxxxx
+@          xxxxx
+x              x
+xxxxxxxxxx     x
+xxxx        xxxx
+xxxx$xxxxxxxxxxx</textarea>
             <button type="submit" id='submit' >No, wściśnij mię!</button>
       </form>
       <div class='tableArrs invisible'>
@@ -90,6 +84,9 @@ xxxxxxxxxxxxxxxxxx</textarea>
           <button id='down' class='arrBtn'>Dół</button>
           <button id='right' class='arrBtn'>Prawo</button>
           <button id='random' class='arrBtn'>Losowy</button>
+          <button id='crumbs' class='arrBtn'>Okruszki</button>
+          <button id='thread' class='arrBtn'>Nić Ariadny</button>
+          <button id='stop' class='arrBtn'>Stop</button>
         </div>
       </div>
 

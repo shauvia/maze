@@ -134,96 +134,61 @@ img {
   box-shadow: 5px 10px 15px rgb(122, 96, 116);
 }
 
+.algorithmDescrip {
+  font-size: 2em;
+  margin-top: 3em;
+  text-align: center;
+  line-height: 150%;
+}
+
+.algorithmDescrip :nth-child(5) {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+em {
+  color: rgb(255, 207, 86);
+}
+
+/* ochre: rgb(195, 111, 9);
+maize Crayola: rgb(255, 207, 86)
+/* Dark Sea Green: rgb(134, 186, 144); */
+
+.pawnDog {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0;
+  box-shadow: none;
+  text-align: center;
+  padding: 0;
+}
+
+.visited {
+  background-image: url("pictures/star.png");
+  background-repeat: no-repeat;
+}
+
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(2, auto);
   column-gap: 5%;
   row-gap: 3vh;
   grid-template-areas:
-    'descrip descrip '
-    'sher inputSher'
-    'wys inputWys'
     'lab inputLab'
     'butSub butSub';
-
-  /* justify-content: center; */
-  margin: 3em auto 0 auto;
+  margin: 10em auto 0 auto;
   width: 50%;
-
-  /* height: 70vh; */
-
-  /* outline: 2px dashed rgb(78, 236, 236); */
 }
 
-legend {
-  grid-area: descrip;
-  text-align: center;
-}
+/* height: 70vh; */
 
-legend :nth-child(1) {
-  font-size: 2.9em;
-}
-
-legend :nth-child(2) {
-  color: rgb(224, 216, 222);
-  font-size: 1.7em;
-  margin-top: 1vh;
-}
-
-label[for=width] {
-  grid-area: sher;
-  margin-top: 2vh;
-  text-align: right;
-}
-
-label[for=width] :nth-child(1) {
-  font-size: 2.3em;
-}
-
-label[for=width] :nth-child(2) {
-  color: rgb(224, 216, 222);
-  font-size: 1.3em;
-}
-
-#width {
-  grid-area: inputSher;
-  color: rgb(224, 216, 222);
-  margin-top: 2vh;
-
-  /* outline: 2px dashed rgb(78, 236, 78); */
-  background-color: rgb(242, 245, 222);
-}
-
-label[for=height] {
-  grid-area: wys;
-  text-align: right;
-  margin-top: 2vh;
-}
-
-label[for=height] :nth-child(1) {
-  font-size: 2.3em;
-}
-
-label[for=height] :nth-child(2) {
-  color: rgb(224, 216, 222);
-  font-size: 1.3em;
-}
-
-#height {
-  grid-area: inputWys;
-  margin-top: 2vh;
-
-  /* outline: 2px dashed rgb(236, 78, 139); */
-  background-color: rgb(242, 245, 222);
-}
+/* outline: 2px dashed rgb(78, 236, 236); */
 
 label[for=labirynt] {
   margin-top: 2vh;
   text-align: right;
   grid-area: lab;
-
-  /* outline: 2px dashed rgb(236, 149, 78); */
 }
 
 #labirynt {
@@ -263,32 +228,28 @@ form > button:hover {
 }
 
 /* Table */
+td {
+  min-width: 2em;
+  height: 2em;
+}
 
 .mazeWall {
-  width: 2.5vw;
-  height: 5vh;
   background-color: rgb(0, 99, 93);
   border: 1px solid  rgb(1, 114, 106);
 }
 
 .noWall {
-  width: 2.5vw;
-  height: 5vh;
   background-color: rgb(134, 186, 144);
   border: 1px solid  rgb(129, 179, 139);
 }
 
 .enterMaze {
-  width: 2.5vw;
-  height: 5vh;
   border: 2px solid rgb(255, 207, 86);
 
   /* background-color: rgb(105, 20, 14); */
 }
 
 .exitMaze {
-  width: 2.5vw;
-  height: 5vh;
   border: 2px solid rgb(211, 75, 21);
 }
 
@@ -301,7 +262,8 @@ form > button:hover {
   grid-template-areas:
     'up up up'
     'left down right'
-    'random random random';
+    'random crumbs thread'
+    'stop stop stop';
   width: 18vw;
   height: 9em;
 }
@@ -326,11 +288,26 @@ form > button:hover {
 
 #random {
   grid-area: random;
-  margin-top: 2vh;
+  margin-top: 6vh;
+}
+
+#crumbs {
+  grid-area: crumbs;
+  margin-top: 6vh;
+}
+
+#thread {
+  grid-area: thread;
+  margin-top: 6vh;
+}
+
+#stop {
+  grid-area: stop;
+  margin-top: 6vh;
 }
 
 .arrBtn {
-  width: 8em;
+  width: 10em;
   height: 5vh;
   justify-self: center;
   font-family: 'Press Start 2P', cursive;
@@ -373,3 +350,4 @@ Dark Sea Green: rgb(134, 186, 144);
 Xiketic rgb(23, 3, 18) */
 
 /* Blood Red rgb(105, 20, 14) */
+}
